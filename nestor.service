@@ -1,0 +1,16 @@
+[Unit]
+Description=Logging bot for Slack
+After=network.target
+
+[Service]
+Type=simple
+User=nestor
+UMask=0077
+EnvironmentFile=/etc/nestor.conf
+ExecStart=/usr/local/bin/nestor /var/log/nestor
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+Alias=nestor.service
